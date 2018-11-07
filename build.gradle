@@ -1,0 +1,53 @@
+description 'Spring project using Web3j'
+
+buildscript {
+	repositories {
+		mavenLocal()
+		mavenCentral()
+		jcenter()
+	}
+	dependencies {
+		classpath 'org.springframework.boot:spring-boot-gradle-plugin:2.0.4.RELEASE',
+				'com.google.protobuf:protobuf-gradle-plugin:0.8.6'
+	}
+}
+
+ext {
+	springBootVersion = '2.0.4.RELEASE'
+	web3jSpringBootStarter = '2.0.0'
+	grpcVersion = '1.10.0'
+	logbackVersion = '1.2.3'
+	protobufVersion = '3.5.1'
+	protocVersion = '3.6.0'
+	web3jVersion = '3.6.0'
+
+	assertJVersion = '3.9.0'
+	junitVersion = '4.12'
+	mockitoVersion = '2.13.0'
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'com.google.protobuf'
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+}
+
+group = 'com.johnc.blkio'
+version = '1.0.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+	compile "org.web3j:web3j-spring-boot-starter:$web3jSpringBootStarter",
+            "org.springframework.boot:spring-boot-starter-web:$springBootVersion",
+			"org.web3j:core:$web3jVersion"
+    testCompile 'junit:junit:4.12',
+            "org.springframework.boot:spring-boot-test:$springBootVersion",
+            "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
+}
